@@ -1,51 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/unsubscribe'
-  end
-  namespace :public do
-    get 'items/show'
-    get 'items/index'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
@@ -53,7 +7,40 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-  devise_for :users
+
+  root :to => "public/homes#top"
+
+  get '/about' => 'public/homes#about', as: 'about'
+
+  namespace :admin do
+    resources :orders, only: [:show, :update]
+    resources :order_details, only: [:update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :items, except: [:destroy]
+
+    get '/' => 'admin/homes#top'
+  end
+
+
+  scope module: :public do
+
+    resources :addresses, except: [:new, :show]
+    resources :orders, only: [:new, :create, :index, :show]
+    post 'orders/confirm'
+    get 'orders/complete'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete 'cart_items/destroy_all'
+    get 'customers/my_page' => 'customers#show'
+    get 'customers/information/edit' => 'customers#edit'
+    patch 'customers/information' => 'customers#update'
+    get 'customers/unsubscribe'
+    patch 'customers/withdraw'
+    resources :items, only: [:index, :show]
+
+  end
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
+
 end
