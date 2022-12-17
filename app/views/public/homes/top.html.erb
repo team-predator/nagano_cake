@@ -1,2 +1,33 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class= "container">
+  <div class= "row m-5">
+    <div class= "col-3">
+        ジャンル検索
+    </div>
+    <div class= "col-9">
+      <div class= "card">
+        <img src= "https://www.pakutaso.com/shared/img/thumb/PPO_1000maicake_TP_V.jpg" class= "card-img"　alt="ショートケーキ画像" width= "600px" height= "300px">
+        <div class= "card-img-overlay">
+          <p class= "explanation-text">
+            ようこそ、ながのCAKEへ！<br>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class= "row">
+    <div class= "offset-3 col-9">
+      <h3 class= "font-weight-bold my-3">新着商品</h3>
+      <% @items %>
+      <p class= "text-right">
+        <%= link_to items_path do %>
+         全ての商品を見る>
+        <% end %>
+      </p>
+    </div>
+  </div>
+
+  </div>
+</div>
