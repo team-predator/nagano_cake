@@ -1,10 +1,9 @@
 <div class="container my-5">
     
-  <div class="row">
-    <p class="mt-2 offset-3">注文情報入力</p>
-      
+  <div class="row no-gutters">
+    <p class="mt-2 offset-3 bg-light">注文情報入力</p>
+  </div>    
       <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
-  </div> 
   <div class="row">
 	<div class="mt-1 col-md-8 mx-auto">
       <p><strong>支払方法</strong></p>
