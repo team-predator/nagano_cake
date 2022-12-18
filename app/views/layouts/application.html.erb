@@ -11,6 +11,106 @@
   </head>
 
   <body>
+    <header>
+      <nav class= "navbar navbar-expand-lg navbar-light">
+        <div class= "container">
+          <%= link_to root_path, class: "navbar-brand p-3" do %>
+            <i class="fas fa-birthday-cake"></i>
+            ながのCAKE
+          <% end %>
+          <div>
+            <ul class= "navbar-nav ml-auto">
+              <% if customer_signed_in? %>
+                <p>
+                  ようこそ、
+                  <%= current_customer.last_name %>
+                  さん！
+                </p>
+                <li class= "nav-item pl-3">
+                  <%= link_to customers_my_page_path, class: 'nav-link text-dark' do %>
+                    <button type= "button" class= "btn btn-secondary">マイページ</button>
+                  <% end %>
+                </li>
+                <li class= "nav-item pl-3">
+                  <%= link_to items_path, class: 'nav-link text-dark' do %>
+                    <button type= "button" class= "btn btn-secondary">商品一覧</button>
+                  <% end %>
+                </li>
+                <li class= "nav-item pl-3">
+                  <%= link_to cart_items_path, class: 'nav-link text-dark' do %>
+                    <button type= "button" class= "btn btn-secondary">カート</button>
+                  <% end %>
+                </li>
+                <li class= "nav-item pl-3">
+                  <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                    <button type= "button" class= "btn btn-secondary">ログアウト</button>
+                  <% end %>
+                </li>
+
+              <% elsif admin_signed_in? %>
+                <li class= "nav-item pl-3">
+                  <%= link_to admin_items_path, class: 'nav-link text-dark' do %>
+                    <button type= "button" class= "btn btn-secondary">商品一覧</button>
+                  <% end %>
+                </li>
+                <li class= "nav-item pl-3">
+                  <%= link_to admin_customers_path,class: 'nav-link text-dark' do %>
+                  <button type= "button" class= "btn btn-secondary">会員一覧</button>
+                <% end %>
+                </li>
+                <li class= "nav-item pl-3">
+                  <%= link_to admin_path,class: 'nav-link text-dark' do %>
+                    <button type= "button" class= "btn btn-secondary">注文履歴一覧</button>
+                  <% end %>
+                </li>
+                <li class= "nav-item pl-3">
+                  <%= link_to admin_genres_path,class: 'nav-link text-dark' do %>
+                    <button type= "button" class= "btn btn-secondary">ジャンル一覧</button>
+                  <% end %>
+                </li>
+                <li class= "nav-item pl-3">
+                  <%= link_to destroy_admin_session_path,class: 'nav-link text-dark' do %>
+                    <button type= "button" class= "btn btn-secondary">ログアウト</button>
+                  <% end %>
+                </li>
+
+              <% else %>
+                <li class= "nav-item pl-3">
+                  <%= link_to about_path, class: 'nav-link text-dark' do %>
+                    <button type= "button" class= "btn btn-secondary">About</button>
+                  <% end %>
+                </li>
+                <li class= "nav-item pl-3">
+                  <%= link_to items_path, class: 'nav-link text-dark' do %>
+                    <button type= "button" class= "btn btn-secondary">商品一覧</button>
+                  <% end %>
+                </li>
+                <li class= "nav-item pl-3">
+                  <%= link_to new_customer_registration_path, class: 'nav-link text-dark' do %>
+                    <button type= "button" class= "btn btn-secondary">新規登録</button>
+                  <% end %>
+                </li>
+                <li class= "nav-item pl-3">
+                  <%= link_to new_customer_session_path, class: 'nav-link text-dark' do %>
+                    <button type= "button" class= "btn btn-secondary">ログイン</button>
+                  <% end %>
+                </li>
+
+              <% end %>
+            </ul>
+            <ul class= "navbar-nav ml-auto">
+              <div class= "input-group">
+                <input type= "text" class= "form-control" placeholder= "search">
+                <button class= "btn btn-outline-success" type= "button">
+                  <i class= "fas fa-search"></i>
+                </button>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
     <%= yield %>
   </body>
 </html>
