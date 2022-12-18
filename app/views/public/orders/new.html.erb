@@ -16,15 +16,15 @@
       
       <p><strong>お届け先</strong></p>
       
-      <%= f.radio_button :address_number, 1 %>
-      <%= f.label :address_number_1, "ご自身の住所" %><br>
+      <%= f.radio_button :address, 1 %>
+      <%= f.label :address_1, "ご自身の住所" %><br>
       
-      <%= f.radio_button :address_number, 2 %>
-      <%= f.label :address_number_2, "登録済み住所から選択" %><br>
+      <%= f.radio_button :address, 2 %>
+      <%= f.label :address_2, "登録済み住所から選択" %><br>
       <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br>
       
-      <%= f.radio_button :address_number, 3 %>
-      <%= f.label :address_number_3, "新しいお届け先" %><br>
+      <%= f.radio_button :address, 3 %>
+      <%= f.label :address_3, "新しいお届け先" %><br>
       
       <%= f.label :postal_code, "郵便番号　" %>
       <%= f.text_field :postal_code, size:"20px", placeholder: "0000000" %><br>
