@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 }
 
   root :to => "public/homes#top"
-
+  get '/admin' => 'admin/homes#top', as: 'admin'
   get '/about' => 'public/homes#about', as: 'about'
 
   namespace :admin do
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
 
-    get '/' => 'admin/homes#top'
+    
   end
 
 
