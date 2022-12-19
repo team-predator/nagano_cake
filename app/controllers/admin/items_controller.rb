@@ -4,6 +4,14 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
+
+    @item = Item.all
+  end
+
+  def create
+    @item = Item.new(item_params)
+    @item.save
+    redirect_to items_path
   end
 
   def show
@@ -11,5 +19,9 @@ class Admin::ItemsController < ApplicationController
 
   def edit
   end
-  
+
+private
+  def list_params
+    params.require(:Item).permit(:name, :introduction, :price, :image)
+  end
 end
