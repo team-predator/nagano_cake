@@ -12,73 +12,61 @@
   <%= render "public/shared/error_messages", resource: resource %>
 
   <div class= "container">
-    <div class= "row pt-2">
+    <div class= "form-group row">
       <div class= "col-md-2 mt-2">名前</div>
-      <label for= "last_name" class= "form-label col-md-1 col-form-label ">（姓）</label>
-      <div class= "col-md-3">
-        <input type= "text" class= "form-control" id= "last_name" placeholder= "令和">
-      </div>
-      <label for= "first_name" class= "form-label col-md-1 col-form-label">（名）</label>
-      <div class= "col-md-3">
-        <input type= "text" class= "form-control" id= "first_name" placeholder= "道子">
-      </div>
+      <%= f.label :last_name, "(姓)", :class => "col-md-1 col-form-label"%>
+      <%= f.text_field :last_name, :class => "form-control col-md-2", placeholder: "令和"%>
+
+      <%= f.label :first_name, "(名)", :class => "col-md-1 col-form-label"%>
+      <%= f.text_field :first_name, :class => "form-control col-md-2", placeholder: "道子"%>
     </div>
-    <div class= "row pt-2">
-      <div class= "col-md-2 mt-2 ">フリガナ</div>
-      <label for= "last_name_kana" class= "form-label col-md-1 col-form-label">（セイ）</label>
-      <div class= "col-md-3">
-        <input type= "text" class= "form-control" id= "last_name_kana" placeholder= "レイワ">
-      </div>
-      <label for= "first_name_kana" class= "form-label col-md-1 col-form-label">（メイ）</label>
-      <div class= "col-md-3">
-        <input type= "text" class= "form-control" id= "first_name_kana" placeholder= "ミチコ">
-      </div>
+
+    <div class= "form-group row">
+      <div class= "col-md-2 mt-2">フリガナ</div>
+      <%= f.label :last_name_kana, "(セイ)", :class => "col-md-1 col-form-label"%>
+      <%= f.text_field :last_name_kana, :class => "form-control col-md-2", placeholder: "レイワ"%>
+
+      <%= f.label :first_name_kana, "(メイ)", :class => "col-md-1 col-form-label"%>
+      <%= f.text_field :first_name_kana, :class => "form-control col-md-2", placeholder: "ミチコ"%>
     </div>
-    <div class= "row pt-2">
-      <label for= "email" class= "col-md-3 col-form-label">メールアドレス</label>
-      <div class= "col-md-7">
-        <input type= "email" class= "form-control" id= "email" placeholder= "sample@example.com">
-      </div>
+
+    <div class= "form-group row">
+      <%= f.label :email, "メールアドレス", :class => "col-md-3 col-form-label"%>
+      <%= f.email_field :email, :class => "form-control col-md-5", placeholder: "sample@example.com"%>
     </div>
-    <div class= "row pt-2">
-      <label for= "postal_code" class= "col-md-3 col-form-label">郵便番号（ハイフンなし）</label>
-      <div class= "col-md-3">
-        <input type= "text" pattern= "[0-9]{7}" class= "form-control" id= "postal_code" placeholder= "0000000">
-      </div>
+
+    <div class= "form-group row">
+      <%= f.label :postal_code, "郵便番号(ハイフンなし)", :class => "col-md-3 col-form-label"%>
+      <%= f.text_field :postal_code, :class => "form-control col-md-2", placeholder: "0000000"%>
     </div>
-    <div class= "row pt-2">
-      <label for= "address" class= "col-md-3 col-form-label">住所</label>
-      <div class= "col-md-7">
-        <input type= "text" class= "form-control" id= "address" placeholder= "東京都渋谷区代々木神園町0-0">
-      </div>
+
+    <div class= "form-group row">
+      <%= f.label :address, "住所", :class => "col-md-3 col-form-label"%>
+      <%= f.text_field :address, :class => "form-control col-md-5", placeholder: "東京都渋谷区代々木神園町0-0"%>
     </div>
-    <div class= "row pt-2">
-      <label for= "telephone_number" class= "col-md-3 col-form-label">電話番号（ハイフンなし）</label>
-      <div class= "col-md-3">
-        <input type= "text" pattern= "[0-9]{10,11}" class= "form-control" id= "telephone_number" placeholder= "0000000000">
-      </div>
+
+    <div class= "form-group row">
+      <%= f.label :telephone_number, "電話番号(ハイフンなし)", :class => "col-md-3 col-form-label"%>
+      <%= f.text_field :telephone_number, :class => "form-control col-md-2", placeholder: "0000000000"%>
     </div>
-    <div class= "row pt-2">
+
+    <div class= "form-group row">
       <label for= "password" class= "col-md-3 col-form-label">
         パスワード
         <% if @minimum_password_length %>
-          （<%= @minimum_password_length %> 文字以上）
+          (<%= @minimum_password_length %> 文字以上)
         <% end %>
       </label>
-      <div class= "col-md-3">
-        <input type= "password" class= "form-control" id= "password">
-      </div>
+      <%= f.password_field :password, :class => "form-control col-md-2"%>
     </div>
-    <div class= "row pt-2">
-      <label for= "password_confirmation" class= "col-md-3 col-form-label">パスワード（確認用）</label>
-      <div class= "col-md-3">
-        <input type= "password" class= "form-control" id= "password_confirmation">
-      </div>
+
+    <div class= "form-group row">
+      <%= f.label :password_confirmation, "パスワード(確認用)", :class => "col-md-3 col-form-label"%>
+      <%= f.password_field :password_confirmation, :class => "form-control col-md-2"%>
     </div>
-    <div class= "row pt-2">
-      <div class="d-grid col-md-4 mx-auto">
-        <button type= "submit" class="btn btn-success btn-lg btn-block" id= "sign_up">新規登録</button>
-      </div>
+
+    <div class= "actions d-grid col-md-4 mx-auto">
+      <%= f.submit "新規登録", :class => "btn btn-success btn-lg btn-block" %>
     </div>
   </div>
 <% end %>
