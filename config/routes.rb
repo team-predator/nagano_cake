@@ -19,16 +19,15 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
 
-    
   end
 
 
   scope module: :public do
 
     resources :addresses, except: [:new, :show]
+    get 'orders/complete' => 'orders#complete'
     resources :orders, only: [:new, :create, :index, :show]
     post 'orders/confirm'
-    get 'orders/complete'
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete 'cart_items/destroy_all'
     get 'customers/my_page' => 'customers#show'
