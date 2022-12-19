@@ -1,7 +1,7 @@
 <div class= "container">
   <div class= "row py-4">
     <div class= "offset-1"></div>
-      <h4>新規会員登録</h4>
+      <h4 class= "bg-secondary text-white">新規会員登録</h4>
     </div>
   </div>
 </div>
@@ -14,6 +14,7 @@
   <div class= "container">
     <div class= "form-group row">
       <div class= "col-md-2 mt-2">名前</div>
+
       <%= f.label :last_name, "(姓)", :class => "col-md-1 col-form-label"%>
       <%= f.text_field :last_name, :class => "form-control col-md-2", placeholder: "令和"%>
 
@@ -65,6 +66,7 @@
       <%= f.password_field :password_confirmation, :class => "form-control col-md-2"%>
     </div>
 
+
     <div class= "actions d-grid col-md-4 mx-auto">
       <%= f.submit "新規登録", :class => "btn btn-success btn-lg btn-block" %>
     </div>
@@ -74,7 +76,7 @@
 <div class= "container">
   <div class= "row py-4">
     <div class= "offset-1">
-      <h4>既に登録済みの方</h4>
+      <h5 class= "bg-secondary text-white">既に登録済みの方</h5>
     </div>
   </div>
   <div class= "row">
