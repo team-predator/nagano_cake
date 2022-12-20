@@ -1,7 +1,9 @@
 class Public::ItemsController < ApplicationController
-  def show
-  end
 
   def index
+    @items = Item.page(params[:page])
+  end
+
+  def show
   end
 end
