@@ -10,8 +10,8 @@
 	    <tr><th width="100">登録情報</th><td><%= link_to "編集する", customers_information_edit_path, class: "btn btn-success w-20" %></td></tr>
 	  </table>
 	    <table border="1" height="300">
-	    	<tr><th bgcolor="whitesmoke" width="200">氏名</th><td width="500"><%= @customer.first_name %> <%= @customer.last_name %></td></tr>
-	      <tr><th bgcolor="whitesmoke" width="200">カナ</th><td width="500"><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></td></tr>
+	    	<tr><th bgcolor="whitesmoke" width="200">氏名</th><td width="500"><%= @customer.last_name %><%= @customer.first_name %></td></tr>
+	      <tr><th bgcolor="whitesmoke" width="200">カナ</th><td width="500"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td></tr>
 	      <tr><th bgcolor="whitesmoke" width="200">郵便番号</th><td width="500"><%= @customer.postal_code %></td></tr>
 	      <tr><th bgcolor="whitesmoke" width="200">住所</th><td width="500"><%= @customer.address %></td></tr>
 	      <tr><th bgcolor="whitesmoke" width="200">電話番号</th><td width="500"><%= @customer.telephone_number %></td></tr>
