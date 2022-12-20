@@ -3,12 +3,13 @@
 <p id="notice"></p>
  <div class="container px-5 px-sm-0">
   <div class="row">
+    <% @item.each do |item| %>
     <div class="col-md-3">
-
+    <%= image_tag item.image, size: "200x200" %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <%= @item.each do |item| %>
-      <thead>
+      <table class="table table-striped">
+      <tbody>
         <tr>
           <td>商品名</td>
           <td><%= item.name %></td>
@@ -29,7 +30,8 @@
           <td>販売ステータス</td>
           <td><%= item.is_active %></td>
         </tr>
-      </thead>
+      </tbody>
+      </table>
       <% end %>
     </div>
   </div>
