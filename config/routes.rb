@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root :to => "public/homes#top"
   get '/admin' => 'admin/homes#top', as: 'admin'
   get '/about' => 'public/homes#about', as: 'about'
-
+  
   namespace :admin do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
