@@ -5,9 +5,20 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    @customer = current_customer
+  end
+  
+  def update
   end
 
   def unsubscribe
+  end
+
+  def withdraw
+    @customer = current_customer
+    @customer.update(is_deleted: false)
+    reset_session
+    redirect_to root_path
   end
 
   private
