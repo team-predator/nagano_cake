@@ -21,8 +21,14 @@
           <td>ジャンル</td>
           <td><%= item.genre %></td>
         </tr>
-        <td>税込価格<br />(税抜価格)</td>
-        <td><%= item.price %></td>
+        <tr>
+          <td>税込価格<br />(税抜価格)</td>
+          <td><%= item.price %></td>
+        </tr>
+        <tr>
+          <td>販売ステータス</td>
+          <td><%= item.is_active %></td>
+        </tr>
       </thead>
       <% end %>
     </div>
