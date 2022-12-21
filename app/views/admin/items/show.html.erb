@@ -12,7 +12,7 @@
       <tbody>
         <tr>
           <td>商品名</td>
-          <td><%= item.name %></td>
+          <td><%= link_to item.name, item_path(item.id) %></td>
         </tr>
         <tr>
           <td>商品説明</td>
