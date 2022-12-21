@@ -35,7 +35,7 @@
         <div calss="form-inline">
           <div class="row pt-2">
           <%= f.label :genre, "ジャンル", :class => "col-md-3 col-form-label" %>
-          <%= f.collection_select(:item_id, Item.all, :id, :genre, {:include_blank => true}) %>
+          <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
           </div>
         </div>
       </div>
@@ -50,6 +50,10 @@
       <div class="form-group">
         <div calss="form-inline">
           <div class="row pt-2">
+            <%= f.radio_button :is_active, :true %>
+            <%= f.label :is_active_true, "販売中" %>
+            <%= f.radio_button :is_active, :false %>
+            <%= f.label :is_active_false, "販売停止中" %>
           </div>
         </div>
       </div>
