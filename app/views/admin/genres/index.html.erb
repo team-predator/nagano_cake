@@ -10,10 +10,14 @@
       <%= f.submit '新規登録', class: 'btn btn-success' %>
       <% end %>
        <table class="table table-striped">
-         <td>ジャンル</td>
+         <thead>
+         <th>ジャンル</th>
+         </thead>
+         <tr>
          <% @genres.each do |genre| %>
          <td><%= genre.name %></td>
          <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: 'btn btn-success' %></td>
+         </tr>
          <% end %>
        </table>
     </div>
