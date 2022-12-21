@@ -20,13 +20,16 @@
         </tr>
       </thead>
       <tbody>
-        <%= @items.each do |item| %>
+        <% @items.each do |item| %>
       　<tr>
-      　<td></td>
+      　<td><%= item.id %></td>
       　<td><%= item.name %></td>
       　<td><%= item.price %></td>
-      　<td><%= item.genre %></td>
-      　<td><%= item.is_active %></td>
+      　<td><%= item.genre.name %></td>
+      　<td><% if item.is_active == true %>販売中
+      　     <% else item.is_active == false %>販売停止中
+      　     <% end %>
+      　</td>
       　</tr>
       　<% end %>
       　<%= paginate @items %>
