@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <td>ジャンル</td>
-          <td><%= item.genre %></td>
+          <td><%= item.genre_id %></td>
         </tr>
         <tr>
           <td>税込価格<br />(税抜価格)</td>
@@ -31,6 +31,7 @@
           <td><%= item.is_active %></td>
         </tr>
       </tbody>
+      <%= link_to '編集する', edit_item_path, class: 'btn btn-success' %>
       </table>
       <% end %>
     </div>
