@@ -4,11 +4,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10">
-      <%= form_with model:@item.new do |f| %>
+      <%= form_with model: @item,url: admin_items_path,method: :post do |f| %>
       <div class="form-group">
         <div calss="form-inline">
           <div class= "row pt-2">
-          <label for= "image" class= "col-md-3 col-form-label">商品画像</label>
+          <%= f.label :imgae, "商品画像", :class => "col-md-3 col-form-label" %>
           <%= f.file_field :image, accept: "image/*" %>
           </div>
         </div>
@@ -17,32 +17,43 @@
       <div class="form-group">
         <div calss="form-inline">
           <div class= "row pt-2">
-          <label for= "name" class= "col-md-3 col-form-label">商品名</label>
-          <%= f.text_field :name, size: "20" %>
+          <%= f.label :name, "商品名", :class => "col-md-3 col-form-label" %>
+          <%= f.text_field :name, :class => "form-control col-md-3" %>
+
           </div>
         </div>
       </div>
      <div class="form-group">
         <div calss="form-inline">
           <div class="row pt-2">
-          <label for="introduction" class= "col-md-3 col-form-label">商品説明</label>
-          <%= f.text_area :introduction, size: "23x7"%>
+          <%= f.label :introduction, "商品説明", :class => "col-md-3 col-form-label" %>
+          <%= f.text_field :introduction, :class => "form-control col-md-3" %>
           </div>
         </div>
       </div>
       <div class="form-group">
         <div calss="form-inline">
           <div class="row pt-2">
-          <label for="introduction" class= "col-md-3 col-form-label">ジャンル</label>
-          <%= f.collection_select :item_id, Item.all, :id, :genre %>
+          <%= f.label :genre, "ジャンル", :class => "col-md-3 col-form-label" %>
+          <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
           </div>
         </div>
       </div>
       <div class="form-group">
         <div calss="form-inline">
           <div class="row pt-2">
-          <label for="price" class= "col-md-3 col-form-label">税抜価格</label>
-          <%= f.text_field :price %>
+          <%= f.label :price, "税抜価格", :class => "col-md-3 col-form-label" %>
+          <%= f.text_field :price, :class => "form-control col-md-3" %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div calss="form-inline">
+          <div class="row pt-2">
+            <%= f.radio_button :is_active, :true %>
+            <%= f.label :is_active_true, "販売中" %>
+            <%= f.radio_button :is_active, :false %>
+            <%= f.label :is_active_false, "販売停止中" %>
           </div>
         </div>
       </div>
