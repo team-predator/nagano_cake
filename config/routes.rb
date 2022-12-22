@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :addresses, except: [:new, :show]
     get 'orders/complete' => 'orders#complete'
     resources :orders, only: [:new, :create, :index, :show]
+    get 'orders/confirm'
     post 'orders/confirm'
     resources :cart_items, only: [:index, :update, :destroy, :create] do
       collection do
