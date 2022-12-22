@@ -1,39 +1,49 @@
 <div class="container my-5">
 
   <div class="row no-gutters">
-    <p class="mt-2 offset-3 bg-light">注文情報確認</p>
+    <h5 class="mt-2 offset-1 bg-light">注文情報確認</h5>
   </div>
 
   <div class="row my-5">
     <div class="col-8">
       <table border="1" height="50">
         <tr>
-          <th bgcolor="whitesmoke" width="100">商品名</th>
-          <th bgcolor="whitesmoke" width="300">単価(税込)</th>
+          <th bgcolor="whitesmoke" width="300">商品名</th>
+          <th bgcolor="whitesmoke" width="150">単価(税込)</th>
           <th bgcolor="whitesmoke" width="150">数量</th>
-          <th bgcolor="whitesmoke" width="250">小計</th>
+          <th bgcolor="whitesmoke" width="150">小計</th>
         </tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+        <% @cart_items.each do |cart_item| %>
+          <td>
+            <% if cart_item.item.image.attached? %>
+            <%= image_tag cart_item.item.image, size: "60x40" %>
+            <% end %>
+            <%= cart_item.item.name %>
+          </td>
+          <td><%= cart_item.item.add_tax_price %></td>
+          <td><%= cart_item.amount %></td>
+          <td><%= cart_item.subtotal%></td>
+          <% @total += cart_item.subtotal %>
+        <% end %>
       </table>
     </div>
     <div class="col-3">
       <table border="1">
-        <tr><th bgcolor="whitesmoke" width="100" height="50">送料</th><td></td></tr>
-        <tr><th bgcolor="whitesmoke" width="100" height="50">商品合計</th><td></td></tr>
-        <tr><th bgcolor="whitesmoke" width="100" height="50">請求金額</th><td></td></tr>
+        <tr><th bgcolor="whitesmoke" width="100" height="50">送料</th><td width="100"><%= @order.shipping_cost %></td></tr>
+        <tr><th bgcolor="whitesmoke" width="100" height="50">商品合計</th><td width="100"><%= @total %></td></tr>
+        <tr><th bgcolor="whitesmoke" width="100" height="50">請求金額</th><td width="100"><%= @total + @order.shipping_cost %></td></tr>
       </table>
     </div>
   </div>
   <div class="row my-5">
     <table>
-      <tr><th width="100">支払方法</th><td><%= @order.payment_method %></td></tr>
+      <tr><th width="100" height="50">支払方法</th><td><%= @order.payment_method_i18n %></td></tr>
       <tr>
-        <th>お届け先</th>
+        <th width="100" height="50">お届け先</th>
         <td>
-          〒
+          〒<%= @order.postal_code %>
+          <%= @order.address %><br>
+          <%= @order.name %>
         </td>
       </tr>
     </table>
