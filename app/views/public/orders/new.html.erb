@@ -12,27 +12,29 @@
       <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
       <br>
       <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-      <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+      <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
 
       <p><strong>お届け先</strong></p>
 
-      <%= f.radio_button :address, 1 %>
-      <%= f.label :address_1, "ご自身の住所" %><br>
+      <%= f.radio_button :address_option, 1 %>
+      <%= f.label :address_option_1, "ご自身の住所" %><br>
+      〒<%= current_customer.postal_code %><%= current_customer.address %><br>
+      <%= current_customer.last_name %><%= current_customer.first_name %><br>
 
-      <%= f.radio_button :address, 2 %>
-      <%= f.label :address_2, "登録済み住所から選択" %><br>
+      <%= f.radio_button :address_option, 2 %>
+      <%= f.label :address_option_2, "登録済み住所から選択" %><br>
       <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br>
 
-      <%= f.radio_button :address, 3 %>
-      <%= f.label :address_3, "新しいお届け先" %><br>
+      <%= f.radio_button :address_option, 3 %>
+      <%= f.label :address_option_3, "新しいお届け先" %><br>
 
       <%= f.label :postal_code, "郵便番号", class:"col-md-2" %>
       <%= f.text_field :postal_code, size:"20px", placeholder: "0000000" %><br>
       <%= f.label :address, "住所", class:"col-md-2" %>
       <%= f.text_field :address, size:"50px", placeholder: "東京都渋谷区代々木神園町0-0" %><br>
-      <%= f.label :address_name, "宛名", class:"col-md-2" %>
-      <%= f.text_field :address_name, size:"20px", placeholder: "令和道子" %><br>
-      <%= f.submit "確認画面へ進む", class: 'btn btn-sm btn-primary col-md-2 offset-3' %>
+      <%= f.label :name, "宛名", class:"col-md-2" %>
+      <%= f.text_field :name, size:"20px", placeholder: "令和道子" %><br>
+      <%= f.submit "確認画面へ進む", class: 'btn btn-sm btn-primary' %>
       <% end %>
     </div>
   </div>

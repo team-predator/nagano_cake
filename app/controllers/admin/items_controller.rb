@@ -30,8 +30,10 @@ class Admin::ItemsController < ApplicationController
     @item.update(item_params)
     redirect_to admin_items_path
   end
+  
 private
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :genre_id, :image, :is_active)
   end
+  
 end
