@@ -31,7 +31,8 @@
       <table border="1">
         <tr><th bgcolor="whitesmoke" width="100" height="50">送料</th><td width="100"><%= @order.shipping_cost %></td></tr>
         <tr><th bgcolor="whitesmoke" width="100" height="50">商品合計</th><td width="100"><%= @total %></td></tr>
-        <tr><th bgcolor="whitesmoke" width="100" height="50">請求金額</th><td width="100"><%= @total + @order.shipping_cost %></td></tr>
+        <tr><th bgcolor="whitesmoke" width="100" height="50">請求金額</th>
+        <td width="100"><% @order.total_payment = @order.shipping_cost + @total %><%= @order.total_payment %></td></tr>
       </table>
     </div>
   </div>
@@ -47,4 +48,20 @@
         </td>
       </tr>
     </table>
+  </div>
+    <div class="row">
+      <div class="col text-center">
+    <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+          <%= f.hidden_field :customer_id %>
+          <%= f.hidden_field :shipping_cost %>
+          <%= f.hidden_field :total_payment %>
+          <%= f.hidden_field :payment_method %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :address %>
+          <%= f.hidden_field :postal_code %>
+          <%= f.hidden_field :status %>
+          <%= f.submit "注文を確定する", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
 </div>

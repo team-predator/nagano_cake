@@ -19,19 +19,49 @@ class Public::OrdersController < ApplicationController
     @total = 0
   end
 
+  def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save
+
+    current_customer.cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
+      @order_detail.order_id = @order.id
+      @order_detail.item_id = cart_item.item_id
+      @order_detail.amount = cart_item.amount
+      @order_detail.price = (cart_item.item.price*1.08).floor
+      @order_detail.save
+    end
+
+    current_customer.cart_items.destroy_all
+    redirect_to orders_complete_path
+  end
+
   def complete
   end
 
   def index
+    @orders = Order.where(customer_id:current_customer)
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   private
 
-  def order_params
-    params.require(:order).permit(:customer_id, :shipping_cost, :total_payment, :status, :payment_method, :postal_code, :address_id, :name)
+  def address_params
+    params(:address).permit(:customer_id, :address, :postal_code, :name)
   end
+
+  def order_params
+    params.require(:order).permit(:customer_id, :shipping_cost, :total_payment, :status, :payment_method, :postal_code, :address, :name, :address_id)
+  end
+
+  def order_detail_params
+    params.require(:order_detail).permit(:item_id, :order_id, :price, :is_active, :making_status)
+  end
+
 
 end
