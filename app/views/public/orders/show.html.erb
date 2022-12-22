@@ -7,8 +7,15 @@
     <div class="col-7">
       <p><strong>注文情報</strong></p>
       <table border="1">
-        <tr><th bgcolor="whitesmoke" width="150" height="50">注文日</th><td></td></tr>
-        <tr><th bgcolor="whitesmoke" width="150" height="75">配送先</th></th><td></td></tr>
+        <tr><th bgcolor="whitesmoke" width="150" height="50">注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td></tr>
+        <tr>
+          <th bgcolor="whitesmoke" width="150" height="75">配送先</th>
+          <td>
+            〒<%= @order.postal_code %><br>
+            <%= @order.address %><br>
+            <%= @order.name %>
+          </td>
+          </tr>
         <tr><th bgcolor="whitesmoke" width="150" height="50">支払方法</th><td></td></tr>
         <tr><th bgcolor="whitesmoke" width="150" height="50">ステータス</th><td></td></tr>
       </table>
