@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root :to => "public/homes#top"
   get '/admin' => 'admin/homes#top', as: 'admin'
   get '/about' => 'public/homes#about', as: 'about'
-  
+
   namespace :admin do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
@@ -28,8 +28,11 @@ Rails.application.routes.draw do
     get 'orders/complete' => 'orders#complete'
     resources :orders, only: [:new, :create, :index, :show]
     post 'orders/confirm'
-    resources :cart_items, only: [:index, :update, :destroy, :create]
-    delete 'cart_items/destroy_all'
+    resources :cart_items, only: [:index, :update, :destroy, :create] do
+      collection do
+        delete "destroy_all"
+      end
+    end
     get 'customers/my_page' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
     patch 'customers/information' => 'customers#update'
