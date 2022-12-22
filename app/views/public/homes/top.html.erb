@@ -1,9 +1,6 @@
 <div class= "container">
   <div class= "row m-5">
-    <div class= "col-3">
-        ジャンル検索
-    </div>
-    <div class= "col-9">
+    <div class= "col-9 mx-auto">
       <div class= "card">
         <img src= "https://www.pakutaso.com/shared/img/thumb/PPO_1000maicake_TP_V.jpg" class= "card-img"　alt="ショートケーキ画像" width= "600px" height= "300px">
         <div class= "card-img-overlay">
@@ -18,16 +15,26 @@
     </div>
   </div>
   <div class= "row">
-    <div class= "offset-3 col-9">
+    <div class= "offset-2 col-md-9">
       <h3 class= "font-weight-bold my-3">新着商品</h3>
-      <% @items %>
-      <p class= "text-right">
-        <%= link_to items_path do %>
-         全ての商品を見る>
-        <% end %>
-      </p>
     </div>
   </div>
-
+  <div class= "row">
+    <% @items.each do |item| %>
+      <div class= "offset-2 col-md-1">
+        <%= link_to item_path(item) do %>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "200x130" %><br>
+          <% end %>
+        <% end %>
+        <%= item.name %><br>
+        ¥<%= item.add_tax_price.to_s(:delimited)%>
+      </div>
+    <% end %>
   </div>
+    <p class= "text-right">
+      <%= link_to items_path do %>
+       全ての商品を見る>
+      <% end %>
+    </p>
 </div>
