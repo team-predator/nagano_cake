@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-md-10">
       <%= link_to new_admin_item_path do %>
-      <i class="fas fa-plus-circle"></i>
+        <i class="fas fa-plus-circle"></i>
       <% end %>
       <table class="table table-hover table-inveres">
       <thead>
@@ -21,13 +21,15 @@
       </thead>
       <tbody>
         <% @items.each do |item| %>
-      　<tr>
-      　<td><%= item.id %></td>
-      　<td><%= link_to item.name, admin_item_path(item) %></td>
-      　<td><%= item.price %></td>
-      　<td><%= item.genre.name %></td>
-      　<td><% if item.is_active == true %>販売中
-      　     <% else item.is_active == false %>販売停止中
+        <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, admin_item_path(item) %></td>
+        <td><%= item.price %></td>
+        <td><%= item.genre.name %></td>
+        <td><% if item.is_active == true %>
+              <p class="text-success">販売中</p>
+      　     <% else item.is_active == false %>
+      　       <p class="text-secondary" >販売停止中</p>
       　     <% end %>
       　</td>
       　</tr>
