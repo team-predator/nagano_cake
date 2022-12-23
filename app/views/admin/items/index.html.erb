@@ -1,14 +1,19 @@
-<h2>商品一覧</h2>
-
-<%= link_to new_admin_item_path do %>
-<i class="fa-thin fa-circle-plus"></i>
-<% end %>
-
+<div class="row no-gutters">
+<h4 class="mt-2 offset-3 bg-light">商品一覧</h4>
+</div>
 
 <p id="notice"></p>
 <div class="container">
   <div class="row">
     <div class="col-md-10">
+
+
+        <div class="row justify-content-end">
+          <%= link_to new_admin_item_path do %>
+        <i class="fas fa-plus-circle" style="font-size: 40; color: cornflowerblack;"></i>
+        </div>
+      <% end %>
+
       <table class="table table-hover table-inveres">
       <thead>
         <tr>
@@ -21,18 +26,27 @@
       </thead>
       <tbody>
         <% @items.each do |item| %>
-      　<tr>
-      　<td></td>
-      　<td><%= item.name %></td>
-      　<td><%= item.price %></td>
-      　<td><%= item.genre %></td>
-      　<td><%= item.is_active %></td>
+
+
+
+        <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, admin_item_path(item) %></td>
+        <td><%= item.price %></td>
+        <td><%= item.genre.name %></td>
+        <td><% if item.is_active == true %>
+              <p class="text-success">販売中</p>
+      　     <% else item.is_active == false %>
+      　       <p class="text-secondary" >販売停止中</p>
+      　     <% end %>
+      　</td>
+
       　</tr>
       　<% end %>
-      　<%= paginate @items %>
-
       </tbody>
       </table>
+      <div class="row justify-content-center">
+       <div><%= paginate @items %></div>
     　</div>
     </div>
   </div>
