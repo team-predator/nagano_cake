@@ -1,27 +1,25 @@
-<div class="row no-gutters">
-<p class="mt-2 offset-3 bg-light">管理者ログイン</p>
-</div>
-
-<div class='container'>
-  <div class='row'>
-     <div class="col-lg-8">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Log in", class: "btn btn-sm btn-primary" %>
-  </div>
-<% end %>
-
-<%= render "admin/shared/links" %>
+<div class= "container">
+  <div class= "row py-4">
+    <div class= "offset-1">
+      <h4 class= "bg-secondary text-white">管理者ログイン</h4>
     </div>
   </div>
 </div>
+
+<%= form_with model: @admin, url: admin_session_path do |f| %>
+  <div class= "container">
+    <div class= "form-group row">
+      <%= f.label :email, "メールアドレス", :class => "offset-1 col-md-3 col-form-label"%>
+      <%= f.email_field :email, :class => "form-control col-md-5", autofocus: "true", autocomplete: "email", placeholder: "sample@example.com"%>
+    </div>
+
+    <div class= "form-group row">
+      <%= f.label :password, "パスワード", :class => "offset-1 col-md-3 col-form-label"%>
+      <%= f.password_field :password, :class => "form-control col-md-5"%>
+    </div>
+
+    <div class= "actions d-grid col-md-3 mx-auto">
+      <%= f.submit "ログイン", :class => "btn btn-primary btn-lg btn-block" %>
+    </div>
+  </div>
+<% end %>
