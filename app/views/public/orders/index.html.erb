@@ -5,8 +5,8 @@
   </div>
 　<div class="row">
     <div class="col-12">
-      <table border="1" height="50">
-        <tr>
+      <table border="1">
+        <tr height="50">
           <th bgcolor="whitesmoke" width="150">注文日</th>
           <th bgcolor="whitesmoke" width="400">配送先</th>
           <th bgcolor="whitesmoke" width="150">注文商品</th>
@@ -27,9 +27,9 @@
             <%= order_detail.item.name %><br>
             <% end %>
           </td>
-          <td><%= order.total_payment %></td>
+          <td><%= order.total_payment %>円</td>
           <td><%= order.status_i18n %></td>
-          <td><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
+          <td class="text-center"><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
         </tr>
         <% end %>
       </table>

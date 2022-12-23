@@ -6,41 +6,45 @@
  <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-8 offset-md-1">
-      <table class="table table-striped">
+      <table>
       <tbody>
-        <tr>
-          <td>会員ID</td>
+        <tr height="50">
+          <td width="200">会員ID</td>
           <td><%= @customer.id %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <td>氏名</td>
           <td><%= @customer.last_name %><%= @customer.first_name %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <td>フリガナ</td>
           <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <td>郵便番号</td>
           <td><%= @customer.postal_code %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <td>住所</td>
           <td><%= @customer.address %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <td>電話番号</td>
           <td><%= @customer.telephone_number %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <td>メールアドレス</td>
           <td><%= @customer.email %></td>
         </tr>
-        <tr>
+        <tr height="50">
           <td>会員ステータス</td>
-          <td><% if @customer.is_deleted == true %>退会
-      　     <% else @customer.is_deleted == false %>有効
-      　     <% end %></td>
+          <td>
+            <% if @customer.is_deleted == true %>
+              <p class="text-secondary">退会</p>
+      　     <% else @customer.is_deleted == false %>
+      　       <p class="text-success">有効</p>
+      　     <% end %>
+      　   </td>
         </tr>
       </tbody>
       </table>

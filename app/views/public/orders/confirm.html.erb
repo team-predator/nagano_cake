@@ -6,14 +6,15 @@
 
   <div class="row my-5">
     <div class="col-8">
-      <table border="1" height="50">
-        <tr>
+      <table border="1">
+        <tr height="50">
           <th bgcolor="whitesmoke" width="300">商品名</th>
           <th bgcolor="whitesmoke" width="150">単価(税込)</th>
           <th bgcolor="whitesmoke" width="150">数量</th>
           <th bgcolor="whitesmoke" width="150">小計</th>
         </tr>
         <% @cart_items.each do |cart_item| %>
+          <tr height="50">
           <td>
             <% if cart_item.item.image.attached? %>
             <%= image_tag cart_item.item.image, size: "60x40" %>
@@ -24,6 +25,7 @@
           <td><%= cart_item.amount %></td>
           <td><%= cart_item.subtotal%></td>
           <% @total += cart_item.subtotal %>
+          </tr>
         <% end %>
       </table>
     </div>
