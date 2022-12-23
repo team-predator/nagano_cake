@@ -1,12 +1,13 @@
 <div class= "container">
   <div class= "row py-4">
     <div class= "offset-1">
-      <h4 class= "bg-secondary text-white">管理者ログイン</h4>
+      <h4 class= "bg-Light">管理者ログイン</h4>
     </div>
   </div>
 </div>
 
-<%= form_with model: @admin, url: admin_session_path do |f| %>
+<div class= "container">
+  <%= form_with model: @admin, url: admin_session_path do |f| %>
   <div class= "container">
     <div class= "form-group row">
       <%= f.label :email, "メールアドレス", :class => "offset-1 col-md-3 col-form-label"%>
@@ -22,4 +23,5 @@
       <%= f.submit "ログイン", :class => "btn btn-primary btn-lg btn-block" %>
     </div>
   </div>
-<% end %>
+  <% end %>
+</div>
