@@ -46,7 +46,8 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_details = @order.order_details
+    @order_details = @order.order_details.all
+    
   end
 
   private
@@ -60,7 +61,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def order_detail_params
-    params.require(:order_detail).permit(:item_id, :order_id, :price, :is_active, :making_status)
+    params.require(:order_detail).permit(:item_id, :order_id, :price, :amount, :is_active, :making_status)
   end
 
 
