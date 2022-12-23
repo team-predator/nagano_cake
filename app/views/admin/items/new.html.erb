@@ -1,5 +1,5 @@
 <div class="row no-gutters">
-<p class="mt-2 offset-3 bg-light">商品新規登録</p>
+<h4 class="mt-2 offset-2 bg-light">商品新規登録</h4>
 </div>
 
 
@@ -22,10 +22,10 @@
           <div class= "row pt-2">
           <%= f.label :name, "商品名", :class => "col-md-3 col-form-label" %>
           <%= f.text_field :name, :class => "form-control col-md-3", placeholder: "商品名" %>
-
           </div>
         </div>
       </div>
+      
      <div class="form-group">
         <div calss="form-inline">
           <div class="row pt-2">
@@ -34,6 +34,7 @@
           </div>
         </div>
       </div>
+      
       <div class="form-group">
         <div calss="form-inline">
           <div class="row pt-2">
@@ -42,6 +43,7 @@
           </div>
         </div>
       </div>
+      
       <div class="form-group">
         <div calss="form-inline">
           <div class="row pt-2">
@@ -50,18 +52,26 @@
           </div>
         </div>
       </div>
+      
       <div class="form-group">
         <div calss="form-inline">
-          <div class="row pt-2">
-            <%= f.radio_button :is_active, :true %>
-            <%= f.label :is_active_true, "販売中" %>
-            <%= f.radio_button :is_active, :false %>
-            <%= f.label :is_active_false, "販売停止中" %>
-          </div>
+            <div class="row pt-2">
+              <div class="col-md-11">
+                <%= f.label :is_active, "販売ステータス", :class => "col-md-3 col-form-label" %>
+                <%= f.radio_button :is_active, :true %>
+                <%= f.label :is_active_true, "販売中" %>
+                <%= f.radio_button :is_active, :false %>
+                <%= f.label :is_active_false, "販売停止中" %>
+              </div>
+            </div>
         </div>
       </div>
+      
+     <div class="row pt-2 ml-5">
      <%= f.submit '新規登録', class: 'btn btn-success' %>
      <% end %>
+     </div>
+     
     </div>
   </div>
 </div>

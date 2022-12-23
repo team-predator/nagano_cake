@@ -1,14 +1,19 @@
 <div class="row no-gutters">
-<p class="mt-2 offset-3 bg-light">商品一覧</p>
+<h4 class="mt-2 offset-3 bg-light">商品一覧</h4>
 </div>
 
 <p id="notice"></p>
 <div class="container">
   <div class="row">
     <div class="col-md-10">
-      <%= link_to new_admin_item_path do %>
-        <i class="fas fa-plus-circle"></i>
+
+
+        <div class="row justify-content-end">
+          <%= link_to new_admin_item_path do %>
+        <i class="fas fa-plus-circle" style="font-size: 40; color: cornflowerblack;"></i>
+        </div>
       <% end %>
+
       <table class="table table-hover table-inveres">
       <thead>
         <tr>
@@ -21,6 +26,9 @@
       </thead>
       <tbody>
         <% @items.each do |item| %>
+
+
+
         <tr>
         <td><%= item.id %></td>
         <td><%= link_to item.name, admin_item_path(item) %></td>
@@ -32,12 +40,13 @@
       　       <p class="text-secondary" >販売停止中</p>
       　     <% end %>
       　</td>
+
       　</tr>
       　<% end %>
       </tbody>
       </table>
-      <div class="center-block">
-      <div><%= paginate @items %></div>
+      <div class="row justify-content-center">
+       <div><%= paginate @items %></div>
     　</div>
     </div>
   </div>

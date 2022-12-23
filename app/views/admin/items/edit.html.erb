@@ -21,10 +21,10 @@
           <div class= "row pt-2">
           <%= f.label :name, "商品名", :class => "col-md-3 col-form-label" %>
           <%= f.text_field :name, :class => "form-control col-md-3" %>
-
           </div>
         </div>
       </div>
+      
      <div class="form-group">
         <div calss="form-inline">
           <div class="row pt-2">
@@ -33,6 +33,7 @@
           </div>
         </div>
       </div>
+      
       <div class="form-group">
         <div calss="form-inline">
           <div class="row pt-2">
@@ -41,6 +42,7 @@
           </div>
         </div>
       </div>
+      
       <div class="form-group">
         <div calss="form-inline">
           <div class="row pt-2">
@@ -49,16 +51,21 @@
           </div>
         </div>
       </div>
+      
       <div class="form-group">
         <div calss="form-inline">
           <div class="row pt-2">
+            <div class="col-md-11">
+            <%= f.label :is_active, "販売ステータス", :class => "col-md-3 col-form-label" %>
             <%= f.radio_button :is_active, :true %>
             <%= f.label :is_active_true, "販売中" %>
             <%= f.radio_button :is_active, :false %>
             <%= f.label :is_active_false, "販売停止中" %>
+            </div>
           </div>
         </div>
       </div>
+      
      <%= f.submit '変更を保存', class: 'btn btn-success' %>
      <% end %>
     </div>
