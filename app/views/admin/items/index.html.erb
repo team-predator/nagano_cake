@@ -1,12 +1,15 @@
-<div class="row no-gutters">
-<h4 class="mt-2 offset-3 bg-light">商品一覧</h4>
+<div class= "container">
+  <div class= "row py-4">
+    <div class= "offset-1"></div>
+      <h4 class= "bg-light">商品一覧</h4>
+    </div>
+  </div>
 </div>
 
 <p id="notice"></p>
 <div class="container">
   <div class="row">
     <div class="col-md-10">
-
 
         <div class="row justify-content-end">
           <%= link_to new_admin_item_path do %>
@@ -26,8 +29,6 @@
       </thead>
       <tbody>
         <% @items.each do |item| %>
-
-
 
         <tr>
         <td><%= item.id %></td>
