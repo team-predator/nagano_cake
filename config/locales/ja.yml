@@ -14,6 +14,5 @@
         making_status:
           cannnot_make: "製作不可"
           waiting_make: "製作待ち"
-          in_making: "制作中"
+          in_making: "製作中"
           make_complete: "製作完了"
-          
