@@ -18,6 +18,13 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
+  def update
+    @cart_items= current_customer.cart_items.all
+    @cart_item = current_customer.cart_items.find(params[:id])
+    @cart_item.update(cart_item_params)
+    render 'index'
+  end
+
   def destroy_all
     cart_items = CartItem.all
     cart_items.destroy_all
