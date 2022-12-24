@@ -1,24 +1,18 @@
-# README
+# ながのCAKE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。
 
-Things you may want to cover:
+## 開発環境
+* ruby 3.1.2
+* rails 6.1.7
+* sqlite3 1.4
 
-* Ruby version
+## 開発者
+### チーム名
+* チームプレデター
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### メンバー　
+* 中川陸(りっくん)
+* 木村凌也(キム)
+* 井手將史(まーしー)
