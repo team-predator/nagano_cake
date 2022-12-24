@@ -1,4 +1,7 @@
 class Public::CartItemsController < ApplicationController
+  
+  before_action :authenticate_customer!
+  
   def index
     @cart_items= current_customer.cart_items.all
   end
@@ -16,6 +19,13 @@ class Public::CartItemsController < ApplicationController
     else
       render 'index'
     end
+  end
+
+  def update
+    @cart_items= current_customer.cart_items.all
+    @cart_item = current_customer.cart_items.find(params[:id])
+    @cart_item.update(cart_item_params)
+    render 'index'
   end
 
   def destroy_all

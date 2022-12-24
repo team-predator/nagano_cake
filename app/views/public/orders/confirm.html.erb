@@ -1,19 +1,23 @@
-<div class="container my-5">
-
-  <div class="row no-gutters">
-    <h5 class="mt-2 offset-1 bg-light">注文情報確認</h5>
+<div class= "container">
+  <div class= "row pt-4">
+    <div class= "offset-1"></div>
+      <h4 class= "bg-light">注文情報確認</h4>
+    </div>
   </div>
+</div>
 
-  <div class="row my-5">
+<div class= "container">
+  <div class="row my-3">
     <div class="col-8">
-      <table border="1" height="50">
-        <tr>
+      <table border="1">
+        <tr height="50">
           <th bgcolor="whitesmoke" width="300">商品名</th>
           <th bgcolor="whitesmoke" width="150">単価(税込)</th>
           <th bgcolor="whitesmoke" width="150">数量</th>
           <th bgcolor="whitesmoke" width="150">小計</th>
         </tr>
         <% @cart_items.each do |cart_item| %>
+          <tr height="50">
           <td>
             <% if cart_item.item.image.attached? %>
             <%= image_tag cart_item.item.image, size: "60x40" %>
@@ -24,6 +28,7 @@
           <td><%= cart_item.amount %></td>
           <td><%= cart_item.subtotal%></td>
           <% @total += cart_item.subtotal %>
+          </tr>
         <% end %>
       </table>
     </div>

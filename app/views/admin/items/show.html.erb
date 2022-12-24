@@ -1,5 +1,9 @@
-<div class="row no-gutters">
-<p class="mt-2 offset-3 bg-light">商品詳細</p>
+<div class= "container">
+  <div class= "row py-4">
+    <div class= "offset-1"></div>
+      <h4 class= "bg-light">商品詳細</h4>
+    </div>
+  </div>
 </div>
 
 <p id="notice"></p>
@@ -26,7 +30,7 @@
           </tr>
           <tr>
             <td>税込価格<br />(税抜価格)</td>
-            <td><%= @item.add_tax_price.to_s(:dalimited) %><br />(<%= @item.price %>)</td>
+            <td><%= @item.add_tax_price.to_s(:dalimited) %>(<%= @item.price %>)円</td>
           </tr>
           <tr>
             <td>販売ステータス</td>

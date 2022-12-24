@@ -12,8 +12,11 @@ class Admin::GenresController < ApplicationController
   def create
     @genres = Genre.all
     @genre = Genre.new(genre_params)
-    @genre.save
-    redirect_to request.referer
+    if @genre.save
+   　 redirect_to request.referer
+    else
+   　 render :index
+    end
   end
 
   def update
