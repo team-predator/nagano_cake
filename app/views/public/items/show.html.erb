@@ -22,7 +22,11 @@
               <%= f.select :amount, *[1..10] %>
               <%= f.hidden_field :item_id, :value => @item.id %>
             </th>
-            <td><%= f.submit "カートに入れる", class: "btn btn-success" %></td>
+            <% if customer_signed_in? %>
+            <td>
+              <%= f.submit "カートに入れる", class: "btn btn-success" %>
+            </td>
+            <% end %>
           </tr>
         </table>
       <% end %>
