@@ -1,0 +1,29 @@
+<div class= "container">
+  <div class= "row m-5">
+    <div class= "offset-1">
+      <h3><strong>商品一覧</strong>(全
+        <%= @items_all.count %>
+        件)
+      </h3>
+    </div>
+  </div>
+  <div class= "row m-5">
+
+    <% @items.each do |item| %>
+      <div class= "col-md-3 p-3">
+        <%= link_to item_path(item) do %>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "200x130" %><br />
+          <% end %>
+        <% end %>
+        <%= item.name %><br>
+        ¥<%= item.add_tax_price.to_s(:delimited)%>
+      </div>
+    <% end %>
+  </div>
+  <div class= "row m-5">
+    <div class= "offset-1 col-md-3 mx-auto">
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>
